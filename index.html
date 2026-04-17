@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanskaran Club</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f0f0f, #1c1c2e);
+  color: white;
+}
+
+/* NAVBAR */
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+}
+
+header h2 {
+  color: #5865f2;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #5865f2;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  background: linear-gradient(45deg, #5865f2, #8f9bff);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+/* CLUB GRID */
+.section {
+  padding: 50px;
+}
+
+.clubs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+/* CARD */
+.card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 15px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  transition: 0.4s;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(88,101,242,0.3);
+}
+
+.card h3 {
+  color: #5865f2;
+}
+
+.card ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+/* BUTTON */
+button {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #5865f2, #7289da);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.6;
+}
+
+/* RESPONSIVE */
+@media(max-width: 600px){
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2>Sanskaran</h2>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Clubs</a>
+    <a href="#">Events</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Welcome to Sanskaran</h1>
+  <p>The Creative Heart of Campus</p>
+</div>
+
+<div class="section">
+  <div class="clubs">
+
+    <div class="card">
+      <h3>Team Phoenix</h3>
+      <p>Fashion Club</p>
+      <button onclick="openApp('phoenix')">Join</button>
+    </div>
+
+    <div class="card">
+      <h3>Team Checkmate</h3>
+      <p>Official Band of TIU</p>
+      <button onclick="openApp('checkmate')">Join</button>
+    </div>
+
+    <div class="card">
+      <h3>Team Swarakriti</h3>
+      <p>Musical Club</p>
+      <button onclick="openApp('swarakriti')">Join</button>
+    </div>
+
+    <div class="card">
+      <h3>Team Chitraka</h3>
+      <ul>
+        <li>Photography</li>
+        <li>Art & Craft</li>
+        <li>Designing</li>
+        <li>Film Society</li>
+      </ul>
+      <button onclick="openApp('chitraka')">Join</button>
+    </div>
+
+    <div class="card">
+      <h3>Team Dhrubotara</h3>
+      <p>Cultural Team</p>
+      <button onclick="openApp('dhrubotara')">Join</button>
+    </div>
+
+    <div class="card">
+      <h3>Team WDC</h3>
+      <ul>
+        <li>Desi Groovers</li>
+        <li>Step Alpha</li>
+        <li>Beat Busters</li>
+      </ul>
+      <button onclick="openApp('wdc')">Join</button>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  © 2026 Sanskaran Cultural Club
+</footer>
+
+<script>
+function openApp(team){
+  window.open("http://localhost:5174/?team=" + team, "_blank");
+}
+</script>
+<!-- LOGIN MODAL -->
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center;">
+  
+  <div style="background:#222; padding:30px; border-radius:10px; width:300px;">
+    <h3>Login</h3>
+    
+    <input id="email" placeholder="Email" style="width:100%; margin:10px 0; padding:10px;">
+    <input id="password" type="password" placeholder="Password" style="width:100%; margin:10px 0; padding:10px;">
+    
+    <button onclick="login()">Login</button>
+  </div>
+</div>
+</body>
+</html>
+<!-- 🌌 Particle Background -->
+<canvas id="bg"></canvas>
+
+<style>
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+</style>
+
+<script>
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 2,
+    speedX: Math.random() - 0.5,
+    speedY: Math.random() - 0.5
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    p.x += p.speedX;
+    p.y += p.speedY;
+
+    ctx.fillStyle = "#5865f2";
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script><script>
+let selectedTeam = "";
+
+function openApp(team){
+  selectedTeam = team;
+  document.getElementById("loginModal").style.display = "flex";
+}
+
+function login(){
+  // For now simple (later connect Firebase)
+  const email = document.getElementById("email").value;
+
+  if(email){
+    window.open("http://localhost:5174/?team=" + selectedTeam, "_blank");
+  } else {
+    alert("Enter details");
+  }
+}
+</script>
